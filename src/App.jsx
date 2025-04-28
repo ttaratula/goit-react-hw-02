@@ -34,7 +34,10 @@ export default function App() {
     const totalFeedback = feedback.good + feedback.neutral + feedback.bad;
     const positiveFeedback = Math.round((feedback.good / totalFeedback) * 100)
 
-  
+    
+    useEffect(() => {
+      localStorage.setItem('feedback', JSON.stringify(feedback));
+    }, [feedback]);
   
 
   return (
