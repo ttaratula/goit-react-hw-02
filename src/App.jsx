@@ -1,7 +1,8 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import Feedback from './components/Feedback'
 import Options from './components/Options'
 import Notification from './components/Notification'
+import Description from './components/Description'
 
 import './App.css'
 
@@ -19,18 +20,15 @@ export default function App() {
       ...prevFeedback,
       [type]: prevFeedback[type] + 1,
      };
- 
-     localStorage.setItem('feedback', JSON.stringify(updatedFeedback));
-     return updatedFeedback;
+
      });
    };
 
 
    const resetFeedback = () => {
-    const resetData = { good: 0, neutral: 0, bad: 0 };
-    setFeedback(resetData);
-
-    localStorage.setItem('feedback', JSON.stringify(resetData));
+    setFeedback({good: 0, neutral: 0, bad: 0 });
+  
+    
    };
     
     const totalFeedback = feedback.good + feedback.neutral + feedback.bad;
@@ -41,8 +39,7 @@ export default function App() {
 
   return (
     <>
-    <h1>Sip Happens Café</h1>
-    <p>Please leave your feedback about our service by selecting one of the options below.</p>
+    <Description/>
   
    <Options updateFeedback ={updateFeedback} totalFeedback ={totalFeedback} resetFeedback={resetFeedback} />
 
