@@ -20,7 +20,7 @@ export default function App() {
       ...prevFeedback,
       [type]: prevFeedback[type] + 1,
      };
-
+     return updatedFeedback;
      });
    };
 
